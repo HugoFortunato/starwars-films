@@ -3,6 +3,7 @@ const connectDB = require('./config/db');
 
 const authRoutes = require('./routes/auth');
 const filmRoutes = require('./routes/film');
+const reviewRoutes = require('./routes/reviews');
 
 const dotenv = require('dotenv');
 
@@ -15,9 +16,10 @@ connectDB();
 
 app.use(express.json());
 
-app.use('/api/auth', authRoutes);
-app.use('/api/film', filmRoutes);
-app.use('/api/films', filmRoutes);
+app.use('/api', authRoutes);
+app.use('/api', filmRoutes);
+app.use('/api', filmRoutes);
+app.use('/api', reviewRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
